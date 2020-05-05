@@ -1,8 +1,3 @@
-#include "rabinKarp.h"
-#include "forcaBruta.h"
-
-#define SIZE 256
-
 void clear(void) {
 	system("@cls||clear");
 }
@@ -39,14 +34,13 @@ void menu() {
 	} while (option != 0);
 }
 
-
-void pesquisa(void (*func)(char *, char *, int, int)) {
+void pesquisa(int (*func)(char *, char *, int)) {
 	
 	FILE *file;
 	char texto[SIZE];
 	char arquivo[SIZE];
 	char frase[SIZE];
-	int linha = 0, match = 0;
+	int linha = 0;
 	
 	printf("\n\t=> Informe o nome do arquivo: ");
 	scanf(" %[^\n]s", arquivo);
@@ -64,12 +58,15 @@ void pesquisa(void (*func)(char *, char *, int, int)) {
 	
 	printf("\n\t=> Informe a frase desejado: ");
 	scanf(" %[^\n]s", frase);
-		
+	
+	match = 0;		
 	while(fgets(texto, SIZE,file) != NULL) {
-		func(frase, texto, linha, match);
+		func(frase, texto, linha);
 		linha++;
 	}
-	if (match == 0)	printf("\n\n\tTexto nao encontrado!\n");
+	if (match == 0)	
+		printf("\n\n\tTexto nao encontrado!\n");
+	
 	fclose(file);
 	printf("\n\n");
 	system("pause");

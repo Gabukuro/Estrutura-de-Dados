@@ -1,7 +1,4 @@
-#define primo 101
-#define R 256
-
-void rabinKarp(char frase[], char texto[], int linha, int match)
+void rabinKarp(char frase[], char texto[], int linha)
 {
 	int i, j, h = 1;
 	int tamanhoFrase = strlen(frase);
@@ -40,7 +37,7 @@ void rabinKarp(char frase[], char texto[], int linha, int match)
 			{
 				printf("\n\tTexto encontrado na linha %d coluna %d", linha, i);
 				printf("\n\t%d - %s\n\n", linha, texto);
-				match++;
+				match ++;
 			}
 		}
 
